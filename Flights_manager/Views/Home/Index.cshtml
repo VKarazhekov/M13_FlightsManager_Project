@@ -1,0 +1,76 @@
+﻿@model Flights_manager.Models.Flight.FlightListViewModel;
+@{
+    ViewData["Title"] = "Flights";
+}
+<h1>List of available flights:</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                From:
+            </th>
+            <th>
+                To:
+            </th>
+            <th>
+                Take Off:
+            </th>
+            <th>
+                Duration:
+            </th>
+            <th>
+                Type of airplane:
+            </th>
+            <th>
+                Airplane ID:
+            </th>
+            <th>
+                Pilot name:
+            </th>
+            <th>
+                Available passenger seats:
+            </th>
+            <th>
+                Available Business Class Seats:
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Flights)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.From)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.To)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TakeOff)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Landing.Subtract(item.TakeOff).TotalHours)<p>hours</p>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TypePlane)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlaneId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PilotName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AvailablePassengerSeats)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AvailableBusinessClassSeats)
+                </td>
+                <td>
+                    <a asp-action="MakeReservation" asp-route-id="">Make a reservation</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

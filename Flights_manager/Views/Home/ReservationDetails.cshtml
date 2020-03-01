@@ -1,0 +1,63 @@
+﻿@model Flights_manager.Models.Reservation.ReservationDetailsViewModel;
+@{
+    ViewData["Title"] = "Reservation Details";
+}
+
+<h1>Details for reservation with email: @Html.DisplayFor(m => Model.Email)</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                First name:
+            </th>
+            <th>
+                Surname:
+            </th>
+            <th>
+                Last name:
+            </th>
+            <th>
+                USN:
+            </th>
+            <th>
+                Phone number:
+            </th>
+            <th>
+                Nationality:
+            </th>
+            <th>
+                Ticket type:
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Passengers)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.USN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nationality)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TicketType)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

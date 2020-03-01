@@ -1,0 +1,55 @@
+﻿@model Flights_manager.Models.Passenger.PassengerAddViewModel;
+@{
+    ViewData["Title"] = "Reservation page";
+}
+
+<h1>
+    Adding passenger for reservation:
+</h1>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddPassenger">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Surname" class="control-label"></label>
+                <input asp-for="Surname" class="form-control" />
+                <span asp-validation-for="Surname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="USN" class="control-label"></label>
+                <input asp-for="USN" class="form-control" />
+                <span asp-validation-for="USN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nationality" class="control-label"></label>
+                <input asp-for="Nationality" class="form-control" />
+                <span asp-validation-for="Nationality" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <p>Ticket type</p>
+                @Html.DropDownListFor(m => m.TicketType, new SelectList(new List<Object>{
+                new {value="Passenger", text="Passenger"},
+                new {value="Business Class", text = "Business Class"}}, "value", "text", Model.TicketType))
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add" class="btn btn-primary" />
+                <a asp-area="" asp-controller="Home" asp-action="ListReservations" class="btn btn-primary">Done</a>
+            </div>
+        </form>
+    </div>
+</div>
